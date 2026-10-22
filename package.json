@@ -1,14 +1,20 @@
 {
-  "name": "@local/dsh-cyber-vape",
+  "name": "dsh-cyber-vape",
   "version": "0.1.0",
-  "private": true,
+  "description": "When DSH thinks, a cyber vape smokes beside the reasoning text. Useless on purpose.",
   "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Useless-toy/dsh-cyber-vape.git"
+  },
+  "keywords": ["dsh", "dsh-plugin", "decoration", "useless", "cyber-vape"],
   "exports": {
     ".": "./index.js",
     "./client": "./client.js",
     "./icon": "./icon.svg"
   },
-  "files": ["index.js", "client.js", "cordis.patch.yml", "icon.svg"],
+  "files": ["index.js", "client.js", "cordis.patch.yml", "icon.svg", "README.md", "LICENSE"],
   "dsh": {
     "bundle": { "patch": "./cordis.patch.yml" },
     "client": {

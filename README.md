@@ -11,7 +11,7 @@
 ## 安装
 
 ```bash
-dsh plugin --profile desktop add github:<你的用户名>/dsh-cyber-vape
+dsh plugin --profile desktop add github:Useless-toy/dsh-cyber-vape
 ```
 
 装完**重启一次 dsh**（插件在 bundle 层组装，不重启不生效）。
