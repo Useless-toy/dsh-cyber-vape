@@ -1,5 +1,5 @@
 window.__ModuleLoader__.load({
-  id: '@local/dsh-cyber-vape',
+  id: 'dsh-cyber-vape',
   factory(require) {
     const React = require('react')
     const h = React.createElement

@@ -1,6 +1,6 @@
 {
   "name": "dsh-cyber-vape",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "When DSH thinks, a cyber vape smokes beside the reasoning text. Useless on purpose.",
   "type": "module",
   "license": "MIT",
@@ -10,17 +10,17 @@
   },
   "keywords": ["dsh", "dsh-plugin", "decoration", "useless", "cyber-vape"],
   "exports": {
-    ".": "./index.js",
-    "./client": "./client.js",
-    "./icon": "./icon.svg"
+    ".": { "default": "./index.js" },
+    "./client": { "default": "./client.js" },
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
   },
   "files": ["index.js", "client.js", "cordis.patch.yml", "icon.svg", "README.md", "LICENSE"],
   "dsh": {
     "bundle": { "patch": "./cordis.patch.yml" },
     "client": {
       "platform": "web",
-      "immediately": true,
-      "inject": ["@deepseek-ai/dsh-client-ui-conversation"]
+      "immediately": true
     }
   }
 }
