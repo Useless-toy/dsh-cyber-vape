@@ -11,15 +11,15 @@ window.__ModuleLoader__.load({
       'user-select:none;pointer-events:none;}',
       '.cv-vape svg{display:block;overflow:visible;}',
       '.cv-vape .cv-tip{transition:fill .25s ease;}',
-      '.cv-vape.on .cv-tip{animation:cv-ember 1.9s ease-in-out infinite;}',
-      '@keyframes cv-ember{0%,100%{opacity:.5}50%{opacity:1}}',
-      '.cv-vape .cv-puff{position:absolute;left:14px;top:2px;width:5px;height:5px;',
-      'border-radius:50%;background:rgba(206,212,230,.55);opacity:0;}',
-      '.cv-vape.on .cv-puff{animation:cv-smoke 2.6s ease-out infinite;}',
-      '.cv-vape.on .cv-puff.d2{animation-delay:.85s;}',
-      '.cv-vape.on .cv-puff.d3{animation-delay:1.7s;}',
-      '@keyframes cv-smoke{0%{opacity:0;transform:translate(0,0) scale(.5)}',
-      '18%{opacity:.6}100%{opacity:0;transform:translate(-7px,-30px) scale(1.9)}}',
+      '.cv-vape.on .cv-tip{animation:cv-ember 2.1s ease-in-out infinite;}',
+      '@keyframes cv-ember{0%,100%{opacity:.55}45%{opacity:1}70%{opacity:.75}}',
+      '.cv-vape .cv-puff{position:absolute;left:11px;top:0;width:6px;height:6px;',
+      'border-radius:50%;background:rgba(196,196,190,.5);opacity:0;}',
+      '.cv-vape.on .cv-puff{animation:cv-smoke 2.8s ease-out infinite;}',
+      '.cv-vape.on .cv-puff.d2{animation-delay:.9s;}',
+      '.cv-vape.on .cv-puff.d3{animation-delay:1.8s;}',
+      '@keyframes cv-smoke{0%{opacity:0;transform:translate(0,0) scale(.45)}',
+      '16%{opacity:.55}100%{opacity:0;transform:translate(-9px,-32px) scale(2.1)}}',
     ].join('')
 
     function ensureStyle() {
@@ -31,7 +31,7 @@ window.__ModuleLoader__.load({
       document.head.appendChild(s)
     }
 
-    function Vape(props) {
+    function Cigarette(props) {
       const on = !!props.running
       return h(
         'div',
@@ -39,10 +39,20 @@ window.__ModuleLoader__.load({
         h(
           'svg',
           { width: 26, height: 56, viewBox: '0 0 26 56', xmlns: 'http://www.w3.org/2000/svg' },
-          h('rect', { x: 10, y: 13, width: 7, height: 38, rx: 2, fill: '#3a3f4b' }),
-          h('rect', { x: 11, y: 9, width: 5, height: 7, rx: 1, fill: '#22262e' }),
-          h('rect', { className: 'cv-tip', x: 8.5, y: 4, width: 10, height: 6, rx: 2, fill: on ? '#ff8a4c' : '#463a35' }),
-          h('rect', { x: 10.5, y: 49, width: 6, height: 5, rx: 2, fill: '#15181d' })
+          // 烟灰（燃烧端，灰白屑）
+          h('rect', { x: 8.5, y: 1.5, width: 9, height: 2.5, rx: 1, fill: '#b9b3a8' }),
+          // 燃烧的火头
+          h('rect', { className: 'cv-tip', x: 8.5, y: 4, width: 9, height: 5, fill: on ? '#ff5a2b' : '#6b2a18' }),
+          // 烟身（米白纸）
+          h('rect', { x: 8.5, y: 9, width: 9, height: 30, fill: '#f2efe6' }),
+          // 烟身左侧阴影，做出圆柱
+          h('rect', { x: 8.5, y: 9, width: 1.6, height: 30, fill: '#e0dccf' }),
+          // 滤嘴接缝
+          h('rect', { x: 8.5, y: 38, width: 9, height: 1.2, fill: '#a8841c' }),
+          // 滤嘴（棕黄）
+          h('rect', { x: 8.5, y: 39, width: 9, height: 13, rx: 1, fill: '#c9a227' }),
+          // 滤嘴阴影
+          h('rect', { x: 8.5, y: 39, width: 1.6, height: 13, fill: '#b08f1f' })
         ),
         on ? h('span', { className: 'cv-puff' }) : null,
         on ? h('span', { className: 'cv-puff d2' }) : null,
@@ -55,7 +65,7 @@ window.__ModuleLoader__.load({
       return h(
         'div',
         { style: { display: 'flex', alignItems: 'flex-start', gap: '8px' } },
-        h(Vape, { running: props.running }),
+        h(Cigarette, { running: props.running }),
         h('div', { style: { whiteSpace: 'pre-wrap', flex: '1 1 auto', minWidth: 0 } }, text)
       )
     }
